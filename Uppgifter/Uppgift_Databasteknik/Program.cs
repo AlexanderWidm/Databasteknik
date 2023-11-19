@@ -15,7 +15,7 @@ namespace Uppgift_Databasteknik
 
             services.AddDbContext<DataContext>(options => options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Alexander\source\repos\Uppgifter\Uppgift_Databasteknik\Contexts\assignment_database.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True"));
 
-            // Repositories
+            // Repos
             services.AddScoped<AddressRepository>();
             services.AddScoped<CustomerRepository>();
             services.AddScoped<ProductCategoryRepository>();

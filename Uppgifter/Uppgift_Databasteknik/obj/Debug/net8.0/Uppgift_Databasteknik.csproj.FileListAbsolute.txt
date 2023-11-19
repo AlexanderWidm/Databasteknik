@@ -128,3 +128,4 @@ C:\Users\Alexander\source\repos\Uppgifter\Uppgift_Databasteknik\obj\Debug\net8.0
 C:\Users\Alexander\source\repos\Uppgifter\Uppgift_Databasteknik\obj\Debug\net8.0\Uppgift_Databasteknik.pdb
 C:\Users\Alexander\source\repos\Uppgifter\Uppgift_Databasteknik\obj\Debug\net8.0\Uppgift_Databasteknik.genruntimeconfig.cache
 C:\Users\Alexander\source\repos\Uppgifter\Uppgift_Databasteknik\obj\Debug\net8.0\ref\Uppgift_Databasteknik.dll
+C:\Users\Alexander\source\repos\Uppgifter\Uppgift_Databasteknik\obj\Debug\net8.0\Uppgift_Databasteknik.sourcelink.json

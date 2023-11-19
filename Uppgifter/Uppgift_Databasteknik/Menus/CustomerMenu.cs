@@ -126,13 +126,13 @@ public class CustomerMenu
             {
                 var form = new CustomerRegistrationForm();
 
-                Console.Write("First Name (Press Enter to keep existing value: {0}): ", existingCustomer.FirstName);
+                Console.Write($"First Name (Press Enter to keep existing value: {existingCustomer.FirstName}");
                 form.FirstName = Console.ReadLine() ?? existingCustomer.FirstName;
 
-                Console.Write("Last Name (Press Enter to keep existing value: {0}): ", existingCustomer.LastName);
+                Console.Write($"Last Name (Press Enter to keep existing value: {existingCustomer.LastName}");
                 form.LastName = Console.ReadLine() ?? existingCustomer.LastName;
 
-                Console.Write("Email (Press Enter to keep existing value: {0}): ", existingCustomer.Email);
+                Console.Write($"Email (Press Enter to keep existing value: {existingCustomer.Email}): ", existingCustomer.Email);
                 form.Email = Console.ReadLine() ?? existingCustomer.Email;
 
                 Console.Write("Street Name (Press Enter to keep existing value: {0}): ", existingCustomer.Address.StreetName);

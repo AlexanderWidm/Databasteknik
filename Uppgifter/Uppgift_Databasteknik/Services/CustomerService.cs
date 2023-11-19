@@ -16,7 +16,7 @@ public class CustomerService
         _customerRepository = customerRepository;
     }
 
-    public async Task<bool> CreateCustomerAsync(CustomerRegistrationForm form)
+    public async Task<bool> CreateCustomerAsync(CustomerRegistrationForm form) // method to create customer in db
     {
         try
         {
@@ -27,7 +27,7 @@ public class CustomerService
                 AddressEntity addressEntity = await _addressRepository.GetAsync(x => x.StreetName == form.StreetName && x.PostalCode == form.PostalCode);
                 addressEntity ??= await _addressRepository.CreateAsync(new AddressEntity { StreetName = form.StreetName, PostalCode = form.PostalCode, City = form.City });
 
-                // create user
+                // create customer
                 CustomerEntity customerEntity = await _customerRepository.CreateAsync(new CustomerEntity { FirstName = form.FirstName, LastName = form.LastName, Email = form.Email, AddressId = addressEntity.Id });
                 if (customerEntity != null)
                     return true;
@@ -37,7 +37,7 @@ public class CustomerService
         return false;
     }
 
-    public async Task<IEnumerable<CustomerEntity>> GetAllAsync()
+    public async Task<IEnumerable<CustomerEntity>> GetAllAsync() // method for showing all customers in db
     {
         try
         {
@@ -47,11 +47,11 @@ public class CustomerService
         catch (Exception ex) { Debug.WriteLine(ex); }
         return null!;
     }
-    public async Task<CustomerEntity> GetCustomerByEmailAsync(string customerEmail)
+    public async Task<CustomerEntity> GetCustomerByEmailAsync(string customerEmail) // method for getting one customer in db by email
     {
         try
         {
-            // Use the GetAsync method from the base class to retrieve a customer by email
+            // use the GetAsync method from CustomerRepository to retrieve a customer by email
             return await _customerRepository.GetAsync(x => x.Email == customerEmail);
         }
         catch (Exception ex)
@@ -61,34 +61,34 @@ public class CustomerService
         return null!;
     }
 
-    public async Task<bool> UpdateCustomerAsync(string customerEmail, CustomerRegistrationForm form)
+    public async Task<bool> UpdateCustomerAsync(string customerEmail, CustomerRegistrationForm form) // method for updating customer in db
     {
         try
         {
-            // Check if the customer exists
+            // check if the customer exists
             var existingCustomer = await _customerRepository.GetAsync(x => x.Email == customerEmail);
             if (existingCustomer != null)
             {
-                // Update the customer information
+                // update the customer information
                 existingCustomer.FirstName = form.FirstName;
                 existingCustomer.LastName = form.LastName;
                 existingCustomer.Email = form.Email;
 
-                // Check if the address needs to be updated
+                // check if the address needs to be updated
                 if (existingCustomer.Address.StreetName != form.StreetName || existingCustomer.Address.PostalCode != form.PostalCode)
                 {
-                    // Check if the new address already exists
+                    // check if the new address already exists
                     AddressEntity addressEntity = await _addressRepository.GetAsync(x => x.StreetName == form.StreetName && x.PostalCode == form.PostalCode);
                     addressEntity ??= await _addressRepository.CreateAsync(new AddressEntity { StreetName = form.StreetName, PostalCode = form.PostalCode, City = form.City });
 
-                    // Update the customer's address
+                    // update the customer's address
                     existingCustomer.AddressId = addressEntity.Id;
                 }
 
-                // Update the customer in the repository
+                // update the customer in the repository
                 var updatedCustomer = await _customerRepository.UpdateAsync(existingCustomer);
 
-                // Check if the update was successful
+                // check if the update was successful
                 return updatedCustomer != null;
             }
         }
@@ -98,16 +98,16 @@ public class CustomerService
         }
         return false;
     }
-    public async Task<bool> DeleteAsync(string customerEmail)
+    public async Task<bool> DeleteAsync(string customerEmail) // method for deleting customer in by email db
     {
         try
         {
-            var customer = await _customerRepository.GetAsync(x => x.Email == customerEmail);
+            var customer = await _customerRepository.GetAsync(x => x.Email == customerEmail); // use GetAsync in CustomerRepository. Get via email
             if (customer != null)
             {
-                await _addressRepository.RemoveAsync(customer.Address);
+                await _addressRepository.RemoveAsync(customer.Address); // remove address with RemoveAsync from AddressRepository
 
-                await _customerRepository.RemoveAsync(customer);
+                await _customerRepository.RemoveAsync(customer); // remove customer with RemoveAsync from CustomerRepository
             }
                 return true;
         }

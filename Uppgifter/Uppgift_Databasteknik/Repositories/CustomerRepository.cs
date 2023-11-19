@@ -12,7 +12,7 @@ public class CustomerRepository : Repo<CustomerEntity>
         _context = context;
     }
 
-    public override async Task<IEnumerable<CustomerEntity>> GetAllAsync()
+    public override async Task<IEnumerable<CustomerEntity>> GetAllAsync() // override to get customer address
     {
         return await _context.Customers.Include(x => x.Address).ToListAsync();
     }
