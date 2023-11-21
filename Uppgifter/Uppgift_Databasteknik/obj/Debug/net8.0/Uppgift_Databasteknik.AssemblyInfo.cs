@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Uppgift_Databasteknik")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afaac8ea287c66e880e5cd8270abe0b1c1414c25")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5abf4fca5e556212b28502b05a322257a6bfadd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Uppgift_Databasteknik")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Uppgift_Databasteknik")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -65,7 +65,7 @@ public class ProductMenu
         foreach (var product in products)
         {
             Console.WriteLine($"{product.ProductName} {product.ProductPrice} SEK");
-            
+
         }
         Console.ReadKey();
     }

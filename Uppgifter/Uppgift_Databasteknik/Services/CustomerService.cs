@@ -9,11 +9,13 @@ public class CustomerService
 {
     private readonly AddressRepository _addressRepository;
     private readonly CustomerRepository _customerRepository;
+    private readonly CustomerTypeRepository _customerTypeRepository;
 
-    public CustomerService(AddressRepository addressRepository, CustomerRepository customerRepository)
+    public CustomerService(AddressRepository addressRepository, CustomerRepository customerRepository, CustomerTypeRepository customerTypeRepository)
     {
         _addressRepository = addressRepository;
         _customerRepository = customerRepository;
+        _customerTypeRepository = customerTypeRepository;
     }
 
     public async Task<bool> CreateCustomerAsync(CustomerRegistrationForm form) // method to create customer in db
